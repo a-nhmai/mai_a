@@ -7,14 +7,17 @@
 
 #install packages
 install.packages("devtools")
-require(devtools)
-library(stringr)
 
-#github install
-# Install from GitHub
-devtools::install_github("billurbektas/tidyTRY")
+    #github install
+    # Install from GitHub
+    devtools::install_github("billurbektas/tidyTRY")
+    
+packages_ls <- c("stringr",
+                 "dplyr",
+                 "ggplot2"
+                 )
 
-library(tidyTRY)
+sapply(packages_ls, library, character.only = TRUE)
 
 #requesting data files
 ##need to grab spp name
@@ -30,3 +33,22 @@ write.csv(id_list,
 
 install.packages("rgbif")
 library(rgbif)
+
+
+
+
+
+#loading in data
+occur_df <- read.delim("~/mai_a/260417_quercus_data/260417_quercus_occur_gbif.csv")
+
+occur_df2 <- occur_df |>
+    select(-c(taxonKey, 
+           scientificName, 
+           taxonomicStatus, 
+           kingdom:genusKey)) |>
+  filter(taxonRank == "SPECIES")
+
+glimpse(occur_df2)
+
+n_distinct(occur_df$species)
+
