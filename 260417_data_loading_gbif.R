@@ -40,7 +40,7 @@ sapply(packages_ls, library, character.only = TRUE)
 
 #loading in data
   #gbif data download: FILE WAS DELETED BC GIT ERROR
-    #occur_df3 <- read.delim("~/mai_a/260417_quercus_data/260419_quercus_occur_gbif/260419_quercus_occur_gbif.txt", comment.char="#")
+    #occur_df3 <- read.delim("~/mai_a/260417_quercus_data/260419_quercus_occur_gbif 2/47329.txt", comment.char="#")
 
     occur_df4 <- occur_df3 |>
       filter(str_detect(SpeciesName, "Quercus")) |> 
@@ -51,14 +51,13 @@ sapply(packages_ls, library, character.only = TRUE)
     write.csv(occur_df4, "~/mai_a/260417_quercus_data/260419_quercus_occur_gbif/querc_coords_gbif260419.csv")
     
      occur_df5 <- occur_df3 |> 
-        filter(str_detect(SpeciesName, "260417_quercus_data/rcus")) |> 
+        filter(str_detect(SpeciesName, "Quercus")) |> 
         filter(DataName == c("Leaf compoundness", 
                              "Altitude",
                              "Maximum height min",
                              "Maximum height max",
                              "Maximum height extreme"
-                             )) |> 
-        distinct(DataName)
+                             )) 
        
      write.csv(occur_df5, "~/mai_a/260417_quercus_data/260419_quercus_occur_gbif/querc_traits_gbif260419.csv")
     
